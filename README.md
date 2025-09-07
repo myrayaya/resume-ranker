@@ -67,3 +67,19 @@ python3 app.py
 
 - For PDF text extraction issues, ensure resumes are actual text PDFs (not scanned images).
 - If app reloads with no results, check console for errors and try sample resumes.
+
+
+## Sample Input/Output
+
+- Write the following sample in the job description (You can add as per your criterias etc.):-
+```
+Software Developer
+
+Requirements:
+- Experience in Python, Django, and REST APIs
+- Knowledge of front-end technologies (React or Angular)
+- Understanding of database systems (PostgreSQL, MySQL)
+- Strong problem-solving skills
+```
+
+- When adding resumes, use extractable text PDFs! There are sample PDFs you can use to compare and receive output!
