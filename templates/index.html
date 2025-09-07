@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = 'stylesheet' type = 'text/css' href = '{{ url_for('static', filename = 'style.css')}}'>
+        <title>AI Resume Ranker</title>
+    </head>
+    <body>
+        <h1>AI-Powered Resume Ranker</h1>
+        <form method = 'post' enctype = "multipart/form-data">
+            <label>Job Description:</label><br>
+            <textarea name = 'job_desc' rows = '10' cols = '80' required></textarea><br><br>
+            <label>Upload PDF Resumes (multiple allowed):</label>
+            <input type = 'file' name = 'resumes' accept = '.pdf' multiple required><br><br>
+            <input type = 'submit' value = 'Rank Resumes'>
+        </form>
+
+        {% if error %}
+        <div style="color: red;">{{ error }}</div>
+        {% endif %}
+
+        {% if show_results %}
+        <h2>Ranking Results</h2>
+        <table border = '1'>
+            <tr>
+                <th>Rank</th>
+                <th>Candidate</th>
+                <th>Score</th>
+            </tr>
+
+            {% for name, score in ranked %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ name }}</td>
+                <td>{{ '%.2f'|format(score) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <a href = '/download'>Download HR Report (CSV) </a>
+        {% endif %}
+    </body>
+</html>
